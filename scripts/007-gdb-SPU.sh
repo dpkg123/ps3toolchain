@@ -13,7 +13,7 @@ if [ ! -d ${GDB} ]; then
   if [ ! -f config.sub ]; then wget --continue https://git.savannah.gnu.org/cgit/config.git/plain/config.sub; fi
 
   ## Unpack the source code.
-  tar xfvJ ${GDB}.tar.xz
+  tar xfJ ${GDB}.tar.xz
 
   ## Patch the source code.
   cat ../patches/${GDB}-PS3.patch | patch -p1 -d ${GDB}
