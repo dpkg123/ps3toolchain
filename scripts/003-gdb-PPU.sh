@@ -34,11 +34,11 @@ fi
 cd ${GDB}/build-ppu
 
 ## Configure the build.
-../configure --prefix="$PS3DEV/ppu" --target="powerpc64-ps3-elf" \
+CC=aarch64-linux-gnu-gcc CXX=aarch64-linux-gnu-g++ ../configure --prefix="$PS3DEV/ppu" --target="powerpc64-ps3-elf" \
     --disable-multilib \
     --disable-nls \
     --disable-sim \
-    --disable-werror
+    --disable-werror --host aarch64-linux-gnu
 
 ## Compile and install.
 PROCS="$(nproc --all 2>&1)" || ret=$?

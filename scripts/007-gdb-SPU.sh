@@ -35,10 +35,10 @@ cd ${GDB}/build-spu
 
 ## Configure the build.
 
-../configure --prefix="$PS3DEV/spu" --target="spu" \
+CC=aarch64-linux-gnu-gcc CXX=aarch64-linux-gnu-g++ ../configure --prefix="$PS3DEV/spu" --target="spu" \
     --disable-nls \
     --disable-sim \
-    --disable-werror
+    --disable-werror --host aarch64-linux-gnu
 
 ## Compile and install.
 PROCS="$(nproc --all 2>&1)" || ret=$?

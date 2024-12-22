@@ -49,7 +49,7 @@ cd ${GCC}/build-ppu
 # Avoid breakage
 CFLAGS="${CFLAGS/-Werror=format-security/}"
 CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
-../configure --prefix="$PS3DEV/ppu" --target="powerpc64-ps3-elf" \
+CC=aarch64-linux-gnu-gcc CXX=aarch64-linux-gnu-g++ ../configure --prefix="$PS3DEV/ppu" --target="powerpc64-ps3-elf" \
 		--with-cpu="cell" \
 		--with-newlib \
 		--with-system-zlib \
@@ -64,7 +64,7 @@ CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
 		--disable-multilib \
 		--disable-nls \
 		--disable-shared \
-		--disable-win32-registry
+		--disable-win32-registry --host aarch64-linux-gnu
 
 ## Compile and install.
 PROCS="$(nproc --all 2>&1)" || ret=$?

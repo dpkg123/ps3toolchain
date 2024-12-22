@@ -46,7 +46,7 @@ cd ${GCC}/build-spu
 ## Configure the build.
 unset CFLAGS CXXFLAGS LDFLAGS
 CFLAGS_FOR_TARGET="-Os -fpic -ffast-math -ftree-vectorize -funroll-loops -fschedule-insns -mdual-nops -mwarn-reloc" \
-../configure --prefix="$PS3DEV/spu" --target="spu" \
+CC=aarch64-linux-gnu-gcc CXX=aarch64-linux-gnu-g++ ../configure --prefix="$PS3DEV/spu" --target="spu" \
 		--enable-languages="c,c++" \
 		--enable-lto \
 		--enable-threads \
@@ -59,7 +59,7 @@ CFLAGS_FOR_TARGET="-Os -fpic -ffast-math -ftree-vectorize -funroll-loops -fsched
 		--disable-multilib \
 		--disable-nls \
 		--disable-shared \
-		--disable-win32-registry
+		--disable-win32-registry --host aarch64-linux-gnu
 
 ## Compile and install.
 PROCS="$(nproc --all 2>&1)" || ret=$?

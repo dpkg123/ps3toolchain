@@ -35,7 +35,7 @@ cd ${BINUTILS}/build-ppu
 
 ## Configure the build.
 unset LDFLAGS
-../configure --prefix="$PS3DEV/ppu" --target="powerpc64-ps3-elf" \
+CC=aarch64-linux-gnu-gcc CXX=aarch64-linux-gnu-g++ ../configure --prefix="$PS3DEV/ppu" --target="powerpc64-ps3-elf" \
 		--with-gcc \
 		--with-gnu-as \
 		--with-gnu-ld \
@@ -45,7 +45,7 @@ unset LDFLAGS
 		--disable-shared \
 		--disable-debug \
 		--disable-dependency-tracking \
-		--disable-werror
+		--disable-werror --host aarch64-linux-gnu
 
 ## Compile and install.
 PROCS="$(nproc --all 2>&1)" || ret=$?

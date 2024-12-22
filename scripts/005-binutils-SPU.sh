@@ -34,7 +34,7 @@ fi
 cd ${BINUTILS}/build-spu
 
 ## Configure the build.
-../configure --prefix="$PS3DEV/spu" --target="spu" \
+CC=aarch64-linux-gnu-gcc CXX=aarch64-linux-gnu-g++ ../configure --prefix="$PS3DEV/spu" --target="spu" \
     --disable-nls \
     --disable-shared \
     --disable-debug \
@@ -43,7 +43,7 @@ cd ${BINUTILS}/build-spu
     --with-gcc \
     --with-gnu-as \
     --with-gnu-ld \
-		--enable-lto
+		--enable-lto --host aarch64-linux-gnu
 
 ## Compile and install.
 PROCS="$(nproc --all 2>&1)" || ret=$?
